@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Camping Made Easy</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+    </head>    
+    
+    <body>
+        
+        <nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">CampingMadeEasy</a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <% if(!currentUser) {%>
+                <li><a href="/login">login</a></li>
+                 <li><a href="/register">Sign-Up</a></li>
+                 <% }else{ %> 
+                    <li><a><%=currentUser.username%></a></li>     
+                  <li><a href="/logout">logout</a></li>
+                  <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+ <!--flash messages -->
+    <% if(error && error.length>0) { %>
+    <div class="container">
+        <div class="alert alert-danger" role="alert">
+            <h3><%=error%></h3>
+        </div>
+    </div>
+    <% } %>
+    
+     <% if(success && success.length>0) { %>
+     <div class="container">
+        <div class="alert alert-success" role="alert">
+            <h3><%=success%></h3>
+        </div>
+    </div>
+     <% } %>
